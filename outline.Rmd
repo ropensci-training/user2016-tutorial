@@ -1,0 +1,96 @@
+---
+title: "Outline: Extracting data from the web APIs and beyond"
+date: "June 1, 2016"
+output: github_document
+---
+
+1. Collecting data from an API (_All exercises with_ http://www.omdbapi.com/ )
+    A.  What is an API? (https://zapier.com/learn/apis/)
+        I)  High level summary of HTTP that includes how it works, what it looks like, and how students are using it daily even if they do not realize it.
+    B. HTTP and R with `httr` (https://cran.r-project.org/web/packages/httr/vignettes/quickstart.html)
+        I)  Install and load `httr`
+        II) HTTP verbs
+            a) GET, POST, PUT, DELETE
+            b) `GET()` - saves a response object, whatever is returned from the server
+            c) How to assemble a query
+        III) HTTP structure
+            a) The data sent back from the server consists of three parts:
+            b) The status line
+                i. `status()`
+                ii. deciphering status codes
+            c) Headers
+                i. `headers()`
+            d) The body
+                i. `content()`
+        IV)  Data Formats
+             a) JSON
+                i. Context: How to interpret the structure. When it is used. Why use it.
+                ii. `content(json, as = "parsed", type = "application/json")`
+             b) XML
+                i. Context: How to interpret the structure. When it is used. Why use it.
+                ii. `content(xml, as = "parsed")`
+        V) Other Verbs
+            a) A brief reminder and description/demo of 
+                i. `POST()`
+                ii. `PUT()`
+                iii. `DELETE()`
+                iv. `HEAD()`
+                v. `PATCH()`
+2. Wrapping an API with an R package (_All exercises build on code in previous part_)
+    A.  Packages that wrap web API's
+        I)  Tour several inspiring examples from ROpenSci
+    B.  The quickest way to make a package (https://www.rstudio.com/resources/webinars/rstudio-essentials-webinar-series-programming-part-3/)
+        I)  R Packages - a reminder that an R package is just an agreed upon file format that does not necessarily need to be hosted on CRAN. An example of an R package on github.
+        II)  To make a package (with a handout)
+            a.  In the RStudio IDE, open a new session
+            b.  File > New Project > New Directory > Package
+            c.  Edit DESCRIPTION
+            d.  Edit R files
+            e.  Build > More > Document
+            f.  Build > More > Build Source Package
+        III) To load a package (on same handout)
+            a. Packages > Install > Install From > Package Archive File > Install
+    C.  Tips for APIs (https://cran.r-project.org/web/packages/httr/vignettes/api-packages.html)
+        I) Strategy
+        II) Negotiating Content
+            a. What is content negotiation?
+            b. `accept_json()`
+            c. `accept_xml()`
+        III) Handling errors
+            a.  `warn_for_status()`
+            b.  `stop_for_status()`
+        IV) Authentication
+            a. Background context for web authentication
+            b. Basic authentication
+                i.  How it works
+                ii. `authenticate("username", "password")`
+                iii. Weaknesses
+            c. OAuth1
+                i.  How it works
+                ii. No longer common
+                iii. `oauth1.0_token()`
+            d. OAuth2
+                i.  How it works
+                ii. Strengths
+                iii. `oauth2.0_token()`
+            e. Best practices for API keys
+3. Web Scraping with R (_All exercises with IMDB_)
+    A.  What if data is on a web page but there is no API? You can attempt to extract the data from the structure of the web page.
+        I.  What is a web page?
+        II. HTML basics
+        III. CSS basics
+        IV. Strategy: identify information by it's CSS selector
+    B.  `rvest` (https://cran.r-project.org/web/packages/rvest/vignettes/selectorgadget.html)
+        I.  selectorGadget
+            a. Installation instructions
+            b. Demo
+        II.  Reading a page's DOM
+            a. `readHTML()`
+        III.  Extracting information
+            a. `html_nodes()`
+            b. `html_text()`
+            c. `html_name()`
+            d. `html_attr()`
+            e. `html_children()`
+            f. `html_table()`
+    C.  Perhaps more practice here than in the other parts
