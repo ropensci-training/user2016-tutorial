@@ -16,6 +16,8 @@ __Target Audience__
 
 Any R user with an interest in retrieving data from the web.
 
-__Website for materials:__ All material for the tutorial will be posted at: `http://ropensci.github.io/user2016-tutorial/` (including instructions on packages that you'll need to install ahead of time).  
+__Website for materials:__ All slides from the workshop are available as a [PDF](slides.pdf) in this repo.
+
+
 
 
